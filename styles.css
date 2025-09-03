@@ -1,0 +1,399 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  background: var(--primary-color);
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Section Styles */
+.section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.section.active {
+  opacity: 1;
+}
+
+/* Background Image Layer */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: 0;
+  background-image: var(--background-image);
+}
+
+/* Gallery Background */
+.gallery-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  padding: 20px;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.gallery-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  border-radius: 8px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Content Container */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  height: 100%;
+}
+
+/* Foreground Image */
+.chapter .foreground-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  opacity: 1;
+  clip-path: inset(15% 0 15% 0);
+}
+
+/* Text and Title Overlay */
+.content > h1,
+.content > p {
+  position: relative;
+  z-index: 3;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Buttons */
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background: var(--gradient);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 0 15px var(--accent-color);
+}
+
+.btn:active {
+  animation: glow 0.5s ease-in-out;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px var(--accent-color); }
+  50% { box-shadow: 0 0 20px var(--accent-color); }
+  100% { box-shadow: 0 0 5px var(--accent-color); }
+}
+
+/* Navigation */
+#chapter-nav {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 4;
+  display: none; /* Hidden by default */
+}
+
+#chapter-nav.active {
+  display: block; /* Shown when toggled */
+}
+
+.nav-btn::after {
+  content: '→';
+  margin-left: 0.5rem;
+}
+
+/* Decisions */
+.decision-btn {
+  margin: 0.5rem;
+}
+
+/* Toggle Control */
+#toggle-nav {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+#debug-select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#debug-select:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+#debug-select option,
+#debug-select optgroup {
+  background: var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Dynamic Intro and Summary Slides */
+#completion .image-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#completion .chapter-image {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  z-index: 2;
+}
+
+#completion svg.path-line {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#completion svg.path-line path {
+  stroke: var(--accent-color);
+  stroke-width: 3;
+  stroke-dasharray: 10 10;
+  stroke-linecap: round;
+  fill: none;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent backdrop */
+  z-index: 1000; /* Above everything else */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.active {
+  display: flex; /* Flex for centering */
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  background: var(--secondary-color);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Changed to hidden to prevent scrollbars */
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  background: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: var(--primary-color);
+}
+
+.close-btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.modal h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+#path-svg {
+  width: 100%;
+  height: calc(100% - 4rem); /* Adjust for header */
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Path Visualizer Styles */
+.path-edge {
+  stroke: var(--text-color);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+
+.path-node {
+  fill: var(--accent-color);
+  stroke: var(--text-color);
+  stroke-width: 2;
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+.path-node:hover {
+  fill: var(--primary-color);
+}
+
+.success-node {
+  fill: #00cc00; /* Green for success */
+}
+
+.failure-node {
+  fill: #ff3333; /* Red for failure */
+}
+
+.path-label {
+  fill: var(--text-color);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.optimal-path {
+  stroke: #ffd700; /* Gold for optimal path */
+  stroke-width: 3;
+  stroke-dasharray: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  p { font-size: 1rem; }
+  .btn { padding: 0.8rem 1.5rem; }
+  .chapter .foreground-media { clip-path: inset(10% 0 10% 0); }
+  #completion .chapter-image { width: 80px; height: 80px; }
+  .modal-content {
+    width: 95%;
+    height: 90vh;
+    padding: 1rem;
+  }
+  .modal h2 {
+    font-size: 1.5rem;
+  }
+  .close-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
+  .gallery-background {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+  }
+  .content > h1 {
+    font-size: 2.5rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .content > p {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* WCAG Compliance */
+.btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.section[aria-hidden="true"] {
+  display: none;
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="STORYTELLING_COURSE" version="1.0"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                      http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+
+  <!-- Metadata -->
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+
+  <!-- Organizations -->
+  <organizations default="ORG1">
+    <organization identifier="ORG1">
+      <title>Data Breach: First Response</title>
+      <item identifier="ITEM1" identifierref="RES1">
+        <title>Data Breach: First Response</title>
+        <adlcp:masteryscore>80</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+
+  <!-- Resources -->
+  <resources>
+    <resource identifier="RES1" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html"/>
+      <file href="styles.css"/>
+      <file href="script.js"/>
+      <file href="data.js"/>
+      <file href="images/mapinHand.jpg"/>
+    <file href="images/exploreRuins.jpg"/>
+    <file href="images/ragingRiver.jpg"/>
+    <file href="images/heartoftheJungle.jpg"/>
+    <file href="images/canopyView.jpg"/>
+    <file href="images/phone-alert-screen.jpg"/>
+    <file href="images/account-lockdown-screen.jpg"/>
+    <file href="images/network-traffic-monitoring.jpg"/>
+    <file href="images/unanswered-call-screen.jpg"/>
+    <file href="images/network-isolation-diagram.jpg"/>
+    <file href="images/malware-scan-results.jpg"/>
+    <file href="images/security-logs-evidence.jpg"/>
+    <file href="images/data-exfiltration-graph.jpg"/>
+    <file href="images/incident-response-team.jpg"/>
+    <file href="images/vulnerability-scan-results.jpg"/>
+    <file href="images/server-isolation-dashboard.jpg"/>
+    <file href="images/corrupted-database-screen.jpg"/>
+    <file href="images/backdoor-discovery-console.jpg"/>
+    <file href="images/ransomware-lock-screen.jpg"/>
+    <file href="images/breach-containment-dashboard.jpg"/>
+    <file href="images/forensic-investigation-screen.jpg"/>
+    <file href="images/customer-notification-email.jpg"/>
+    <file href="images/system-compromise-alert.jpg"/>
+    <file href="images/security-audit-report.jpg"/>
+    <file href="images/second-breach-alert.jpg"/>
+      <file href="SCORM_API_wrapper.js"/>
+    </resource>
+  </resources>
+</manifest>
